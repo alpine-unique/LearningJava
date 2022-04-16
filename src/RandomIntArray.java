@@ -1,44 +1,47 @@
-import org.jetbrains.annotations.NotNull;
-
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class RandomIntArray {
 
-    public static void main(String Args[]){
+    public static void main(String[] Args){
         filler();
-            }
+    }
 
     public static void filler() {
         Random randomarray = new Random();
-        int[] array = randomarray.ints(20, -10, 50).toArray();
+        int[] array = randomarray.ints(20, -10, 20).toArray();
         maxNegative(array);
         minPositive(array);
+
     }
-    public static void maxNegative( int[] array) {
-
-
-        int maxNegative = 0;
+    public static void maxNegative(int[] array) {
+        int maxnegative = -1;
         for (int i = 0; i < array.length; i++) {
-            if(array[i] < 0 && ( maxNegative == 0 || array[i] > maxNegative)) {
-                maxNegative = array[i];
+            if(array[i] < 0 && (maxnegative == -1 || array[i] > array[maxnegative])) {
+                maxnegative = i;
             }
         }
-        int maxNegIndx = (Arrays.asList((int[])array)).indexOf(maxNegative); //
         System.out.println(Arrays.toString(array));
-        System.out.println(maxNegative);
-        System.out.println("Индекс максимального отриц. элемента: " + maxNegIndx);
+        System.out.println("А оно надо? " + array[maxnegative]);
+        System.out.println("Индекс максимального отриц. элемента: " + maxnegative);
     }
     public static void minPositive(int[] array) {
-        int minPositive = 0;
+        int minpositive = 1;
         for (int i = 0; i <array.length; i++) {
-            if(array[i] > 0 && (minPositive == 0 || array[i] < minPositive)) {
-                minPositive = array[i];
+            if(array[i] > 0 && (minpositive == 1 || array[i] < array[minpositive])) {
+                minpositive = i;
             }
         }
-        int minPosIndx = (Arrays.asList(array)).indexOf(minPositive);
-        System.out.println(minPositive);
-        System.out.println("Индекс минимального положит. элемента: " + minPosIndx);
+        System.out.println(array[minpositive]);
+        System.out.println("Индекс минимального положит. элемента: " + minpositive);
+    }
+    public static void toListAndSwap (int[] array,int minpositive,int maxnegative) {
+        List<Integer> list = new ArrayList<Integer>(array.length);
+        for (int i: array) {
+            list.add(i);
+        }
+        System.out.println("Список элементов до свапа: \n " + list);
+        Collections.swap(list, maxnegative, minpositive);
+        System.out.println("Список элементотв после свапа \n " + list);
     }
 
 }
