@@ -34,9 +34,9 @@ public class RandomIntArray {
         for (int i: array) {
             list.add(i);
         }
-        System.out.println("Список элементов до свапа: \n " + list);
+        System.out.println("List before swapping: \n " + list);
         Collections.swap(list, maxnegative, minpositive);
-        System.out.println("Список элементотв после свапа: \n " + list);
+        System.out.println("List after swapping: \n " + list);
     }
 
 }
