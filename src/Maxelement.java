@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class maxelement {
+public class Maxelement {
     public static void main(String[] Args){
         Scanner sc;
         System.out.println("¬ведите массив слов через пробел: \n");
